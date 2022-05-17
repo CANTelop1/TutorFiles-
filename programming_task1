@@ -1,0 +1,32 @@
+# Author: Lachlan Williams
+# Date: 17 May 2022
+#
+# This following function takes
+# a List of integers and returns
+# the an integer that represents it
+#
+
+def arrayToInt(array: []) -> int:
+
+    # intialise the integer to be returned 
+    retVal = 0
+
+    # This is a loop that will iterate through each integer in the array
+    for i in range(len(array)):
+        # Here we multiply the next intger by 10*i and add it to ratVal
+        # We take the last element and work backwards through the array
+        retVal += array[len(array)-1-i]*10**i
+
+    #returns the integer
+    return retVal
+
+if __name__ == '__main__':
+    array = [8,3,5,1]
+    print(array)
+    anInt = arrayToInt(array)
+    print(anInt)
+
+    array = [int(v) for v in input('Enter Array: ').split()]
+    print(array)
+    anInt = arrayToInt(array)
+    print(anInt)
