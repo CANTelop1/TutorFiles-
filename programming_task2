@@ -1,0 +1,74 @@
+# Author: Lachlan Williams
+# Date: 17 May 2022
+#
+# This following function takes
+# a List of integers and returns
+# the an integer that represents it
+#
+
+import random
+
+#
+# This class is used to create an instance of the guessing game 
+# and all the methods used to run it.
+#
+class GuessingGame:
+
+    # This method creates the object
+    # and gives it a random number
+    # between 1 and 100 
+    def __init__(self):
+        self.number = random.randint(1,100)
+        
+    # This method is for running all
+    # actually running the game
+    # and makes works all the methods together 
+    def run(self):
+        count = 0
+        self.menu
+        guess = self.verify(int(input("Guess a number between 1 and 100:")))
+
+        # This while loop will run infinitly
+        # and will only stop once the user has
+        # guessed the correct number 
+        while True:
+            count += 1
+            if self.number == guess:
+                print("Congrats you got the number!!")
+                print("It took you: " + str(count) + " guesses")
+                return
+            else:
+                print(self.check(guess))
+                guess = self.verify(int(input("Try again:")))
+                
+ 
+    # This methods verifies whether the guessed
+    # number is between 1 and 100
+    # and prompts the user for another number if not
+    def verify(self, guess: int) -> int:
+        if guess <= 100 and guess >= 1:
+            return guess
+        else:
+            return self.verify(int(input("(Bad input) try a number between 1 and 100:")))
+
+    # This methods is used to see if the guessed number is
+    # higher or lower than the actual number to be guessed
+    # it returns a string to denote the outcome
+    def check(self, guess: int) -> str:
+        if guess < self.number:
+            return "Higher"
+        elif guess > self.number:
+            return "Lower"
+
+    # This method simply prints the title screen
+    # when starting the game
+    def menu():
+        print("Welcome to the guessing game!!")
+
+# This is used for creating an instance of the class
+# then running the game.
+# This is not apart of the class but simply creates
+# an object of that class
+if __name__ == '__main__':
+    game = GuessingGame()
+    game.run()
